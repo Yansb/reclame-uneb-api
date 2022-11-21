@@ -27,9 +27,7 @@ export class MongodbProblemRepository implements IProblemRepository {
           ? { $regex: '.*' + query.search + '.*' }
           : { $exists: true },
       })
-      .projection({
-        image: false,
-      })
+      .select({ image: 0 })
       .exec();
   }
 
